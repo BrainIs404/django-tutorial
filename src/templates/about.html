@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>about page</p>
+    <h1>{{ title | title }}</h1>
+    <p>Me</p>
+    <p>this is a template</p>
+
+    {{ html_text | safe }}
+
+    <p>
+        {{ about_text }}, {{ my_number }}, {{ my_list }}
+    </p>
+
+    <ul>
+        {% for n in my_list %}
+            {% if n == 123 %}
+                <li>{{ forloop.counter }} - {{ n | add:222 }}</li>
+            {% elif n == 456 %}
+                <li>{{ forloop.counter }} - {{ n | add:111 | add:333 }}</li>
+            {% elif n == "abc" %}
+                <li>{{ forloop.counter }} - {{ "This is not a number!!!!" }}</li>
+            {% else %}
+                <li>{{ forloop.counter }} - {{ n }}</li>
+            {% endif %}
+            
+        {% endfor %}
+    </ul>
+{% endblock %}
